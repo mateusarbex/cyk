@@ -1,0 +1,7 @@
+S->AB|CB|DF|DD
+A->CE
+B->DD|DF
+C->a
+D->b
+E->CD
+F->DA
