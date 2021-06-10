@@ -36,16 +36,18 @@ function cyk(palavra, terminals, initialVariable, variables) {
     }
   }
   if (tabela[0][n - 1][0] === initialVariable) {
-    console.log("SIM");
+    console.log(palavra, " - SIM");
   } else {
-    console.log("NAO");
+    console.log(palavra, " - NAO");
   }
 }
 
 function main(file) {
   const regex = /[a-z0-9]/;
 
-  const palavra = "abbb";
+  const palavras = fs
+    .readFileSync("./palavras.txt", { encoding: "utf-8" })
+    .split("\r\n");
   let initialVariable = "";
 
   const terminals = [];
@@ -68,7 +70,9 @@ function main(file) {
       }
     }
   }
-  cyk(palavra, terminals, initialVariable, variables);
+  for (let palavra of palavras) {
+    cyk(palavra, terminals, initialVariable, variables);
+  }
 }
 const file = fs.readFileSync("./gramatica.txt", { encoding: "utf-8" });
 
